@@ -1,156 +1,164 @@
-import { Heart, Mail, MapPin, Phone, Facebook, Twitter, Instagram, Linkedin, ArrowUp } from "lucide-react";
-
+import { Mail, MapPin, Phone, Facebook, Twitter, Instagram, Linkedin, ArrowUp, Heart } from "lucide-react";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <footer id="footer" className="bg-gradient-to-br from-gray-900 via-green-900 to-indigo-900 text-white">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Section */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl font-bold">VolontAction</span>
+    <footer style={{ background: "#085041", fontFamily: "Inter, sans-serif" }}>
+
+      {/* Main */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "64px 24px 40px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 40 }}>
+
+          {/* Brand */}
+          <div>
+            <div style={{ marginBottom: 16 }}>
+              <span style={{ fontSize: 22, fontWeight: 700, color: "white", letterSpacing: "-0.5px" }}>
+                Volun<span style={{ color: "#9FE1CB" }}>-</span>Tree
+              </span>
             </div>
-            <p className="text-gray-300 leading-relaxed">
-              Connecter les bénévoles et les associations pour créer un impact positif dans nos communautés.
+            <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, lineHeight: 1.7, marginBottom: 24 }}>
+              Connecter bénévoles et associations pour créer un impact positif dans nos communautés.
             </p>
-            <div className="flex gap-3">
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-green-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-green-400 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-pink-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 hover:bg-green-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
+            <div style={{ display: "flex", gap: 10 }}>
+              {[
+                { href: "https://web.facebook.com/", icon: <Facebook size={16} /> },
+                { href: "https://x.com/",            icon: <Twitter   size={16} /> },
+                { href: "https://www.instagram.com/",icon: <Instagram size={16} /> },
+                { href: "https://www.linkedin.com/", icon: <Linkedin  size={16} /> },
+              ].map((s, i) => (
+                <a key={i} href={s.href} target="_blank" rel="noreferrer" style={{
+                  width: 36, height: 36, borderRadius: 8,
+                  background: "rgba(255,255,255,0.1)",
+                  border: "0.5px solid rgba(255,255,255,0.15)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  color: "rgba(255,255,255,0.75)",
+                  transition: "all 0.2s", textDecoration: "none",
+                }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "#1D9E75"; e.currentTarget.style.color = "white"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "rgba(255,255,255,0.75)"; }}
+                >
+                  {s.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
-            <h3 className="text-lg font-bold mb-6 relative inline-block">
+            <h3 style={{ color: "white", fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 20 }}>
               Navigation
-              <span className="absolute bottom-0 left-0 w-12 h-1 bg-gradient-to-r from-green-400 to-indigo-400 rounded-full"></span>
             </h3>
-            <ul className="space-y-3">
-              <li>
-                <a href="#home" className="text-gray-300 hover:text-white hover:translate-x-2 inline-block transition-all duration-300">
-                  Accueil
-                </a>
-              </li>
-              <li>
-                <a href="#presentation" className="text-gray-300 hover:text-white hover:translate-x-2 inline-block transition-all duration-300">
-                  Présentation
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-300 hover:text-white hover:translate-x-2 inline-block transition-all duration-300">
-                  Contact
-                </a>
-              </li>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+              {[
+                { label: "Accueil",      href: "/#home"         },
+                { label: "Présentation", href: "/#presentation" },
+                { label: "Contact",      href: "/#contact"      },
+              ].map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} style={{
+                    color: "rgba(255,255,255,0.6)", fontSize: 14,
+                    textDecoration: "none", transition: "all 0.2s",
+                    display: "flex", alignItems: "center", gap: 6,
+                  }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "white"; e.currentTarget.style.paddingLeft = "4px"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.6)"; e.currentTarget.style.paddingLeft = "0"; }}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Ressources */}
           <div>
-            <h3 className="text-lg font-bold mb-6 relative inline-block">
+            <h3 style={{ color: "white", fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 20 }}>
               Ressources
-              <span className="absolute bottom-0 left-0 w-12 h-1 bg-gradient-to-r from-green-400 to-indigo-400 rounded-full"></span>
             </h3>
-            <ul className="space-y-3">
-              <li>
-    
-                <a href="FormBenevolat" className="text-gray-300 hover:text-white hover:translate-x-2 inline-block transition-all duration-300">
-                  Devenir Bénévole
-                </a>
-             
-              </li>
-              <li>
-                <a href="FormAssociation" className="text-gray-300 hover:text-white hover:translate-x-2 inline-block transition-all duration-300">
-                  Inscrire une Association
-                </a>
-              </li>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+              {[
+                { label: "Devenir Bénévole",       href: "/FormBenevolat"   },
+                { label: "Inscrire une Association", href: "/FormAssociation" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <a href={l.href} style={{
+                    color: "rgba(255,255,255,0.6)", fontSize: 14,
+                    textDecoration: "none", transition: "all 0.2s",
+                  }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "white"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.6)"; }}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
-            <h3 className="text-lg font-bold mb-6 relative inline-block">
+            <h3 style={{ color: "white", fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 20 }}>
               Contact
-              <span className="absolute bottom-0 left-0 w-12 h-1 bg-gradient-to-r from-green-400 to-indigo-400 rounded-full"></span>
             </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">
-                  123 Rue de la Solidarité<br />
-                  75001 Rabat, Maroc
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-green-400 flex-shrink-0" />
-                <a href="tel:+33123456789" className="text-gray-300 hover:text-white transition-colors">
-                  +212 1 23 05 67 74
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-green-400 flex-shrink-0" />
-                <a href="mailto:contact@volontaction.fr" className="text-gray-300 hover:text-white transition-colors">
-                  contact@volontaction.fr
-                </a>
-              </li>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 14 }}>
+              {[
+                { icon: <MapPin size={14} />, text: "123 Rue de la Solidarité, Rabat, Maroc" },
+                { icon: <Phone  size={14} />, text: "+212 1 23 05 67 74",  href: "tel:+212123056774" },
+                { icon: <Mail   size={14} />, text: "contact@Volun-Tree.ma",   href: "mailto:contact@g-asso.ma" },
+              ].map((c, i) => (
+                <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                  <span style={{ color: "#9FE1CB", marginTop: 2, flexShrink: 0 }}>{c.icon}</span>
+                  {c.href ? (
+                    <a href={c.href} style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, textDecoration: "none", lineHeight: 1.5 }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = "white"}
+                      onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.6)"}
+                    >{c.text}</a>
+                  ) : (
+                    <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, lineHeight: 1.5 }}>{c.text}</span>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
-              © 2026 VolontAction. Tous droits réservés.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Politique de confidentialité
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Conditions d'utilisation
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                Mentions légales
-              </a>
-            </div>
-            <button
-              onClick={scrollToTop}
-              className="w-10 h-10 bg-white/10 hover:bg-green-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
-              aria-label="Retour en haut"
-            >
-              <ArrowUp className="w-5 h-5" />
-            </button>
+      {/* Divider */}
+      <div style={{ borderTop: "0.5px solid rgba(255,255,255,0.1)" }}>
+        <div style={{
+          maxWidth: 1100, margin: "0 auto",
+          padding: "20px 24px",
+          display: "flex", alignItems: "center",
+          justifyContent: "space-between", flexWrap: "wrap", gap: 16,
+        }}>
+          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, margin: 0 }}>
+            © 2026 VolunTree. Fait avec <Heart size={12} style={{ display: "inline", color: "#9FE1CB", margin: "0 3px" }} /> au Maroc.
+          </p>
+          <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+            {["Confidentialité", "Conditions d'utilisation", "Mentions légales"].map((l) => (
+              <a key={l} href="#" style={{
+                color: "rgba(255,255,255,0.4)", fontSize: 12,
+                textDecoration: "none", transition: "color 0.2s",
+              }}
+                onMouseEnter={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.8)"}
+                onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.4)"}
+              >{l}</a>
+            ))}
           </div>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            style={{
+              width: 36, height: 36, borderRadius: 8,
+              background: "rgba(255,255,255,0.1)",
+              border: "0.5px solid rgba(255,255,255,0.15)",
+              color: "rgba(255,255,255,0.7)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", transition: "all 0.2s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#1D9E75"; e.currentTarget.style.color = "white"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "rgba(255,255,255,0.7)"; }}
+          >
+            <ArrowUp size={16} />
+          </button>
         </div>
       </div>
     </footer>

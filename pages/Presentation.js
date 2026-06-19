@@ -1,267 +1,132 @@
 import { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { ArrowRight, Users, Target, Zap } from "lucide-react";
 
 const Presentation = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    
-    const style = document.createElement('style');
-    style.textContent = `
-      .about-section {
-        padding: 8rem 0 4rem 0; 
-
-        overflow: visible; 
-        position: relative;
-      }
-      
-      .about-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-        border-radius: 50%;
-        z-index: 0;
-      }
-      
-      .about-container {
-        position: relative;
-        z-index: 1;
-      }
-      
-      .image-column {
-        position: relative;
-        margin-top: -100px; 
-      }
-      
-      .about-image-wrapper {
-        position: relative;
-        border-radius: 2rem;
-        overflow: hidden;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease;
-        max-width: 90%;
-        margin-left: auto;
-      }
-      
-      .about-image-wrapper:hover {
-        transform: scale(1.02);
-      }
-      
-      .about-image {
-        width: 100%;
-        height: 480px; /* Ajustit l'height */
-        object-fit: cover;
-        display: block;
-      }
-      
-      .content-column {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-right: 2rem;
-      }
-      
-      .section-label {
-        display: inline-block;
-        background: linear-gradient(135deg, #10b981, #3b82f6);
-        color: white;
-        padding: 0.5rem 1.25rem;
-        border-radius: 2rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        margin-bottom: 1.5rem;
-        text-transform: uppercase;
-        width: fit-content;
-      }
-      
-      .about-heading {
-        font-size: 3rem;
-        font-weight: 800;
-        color: #111827;
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
-      }
-      
-      .about-heading-gradient {
-        background: linear-gradient(135deg, #10b981, #3b82f6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      
-      .about-description {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: #4b5563;
-        margin-bottom: 1.5rem;
-      }
-      
-      .feature-list {
-        list-style: none;
-        padding: 0;
-        margin-bottom: 2rem;
-      }
-      
-      .feature-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 0.8rem;
-        font-size: 1rem;
-        color: #374151;
-      }
-      
-      .feature-icon {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #10b981, #3b82f6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      
-      .btn-discover {
-        background: linear-gradient(135deg, #10b981, #059669);
-        color: white;
-        padding: 0.8rem 2rem;
-        border-radius: 0.75rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        border: none;
-        box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        text-decoration: none;
-        width: fit-content;
-      }
-      
-      .btn-discover:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
-        color: white;
-      }
-
-      .stats-row {
-        display: flex;
-        gap: 2rem;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid #e5e7eb;
-      }
-      
-      .stat-number {
-        font-size: 1.8rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #10b981, #3b82f6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      @media (max-width: 992px) {
-        .image-column {
-          margin-top: 2rem;
-        }
-        .about-heading {
-          font-size: 2.25rem;
-        }
-        .about-image-wrapper {
-          max-width: 100%;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.head.removeChild(style);
-    };
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section className="about-section bg-gray-100">
-      <div className="container about-container">
-        <div className="row align-items-start">
-          {/* Left Column - Content */}
-          <div className="col-lg-6">
-            <div className="content-column">
-              <span className="section-label">À Propos de Nous</span>
-              <h2 className="about-heading">
-                Qui sommes-nous <span className="about-heading-gradient">?</span>
-              </h2>
-              <p className="about-description">
-                Notre plateforme est une solution digitale dédiée à la gestion et à l’organisation du
-                bénévolat. Elle permet de connecter efficacement les associations et les bénévoles à travers
-                un espace centralisé, simple et accessible.
-              </p>
-              <p className="about-description">
-                Elle offre aux associations la possibilité de publier et gérer
-                leurs missions, tout en facilitant aux bénévoles la recherche d’opportunités 
-                adaptées à leurs compétences et disponibilités. L’ensemble des fonctionnalités
-                est conçu pour assurer une coordination fluide, depuis l’inscription jusqu’au
-                suivi des participations.
-              </p>
-              
-             {/* Feature List */}
-             <ul className="feature-list">
-               <li className="feature-item">
-                 <div className="feature-icon">
-                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                    <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                   </svg>
-                 </div>
-                 <span>Gestion centralisée et intuitive des activités bénévoles</span>
-               </li>
-               <li className="feature-item">
-                 <div className="feature-icon">
-                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                     <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                   </svg>
-                 </div>
-                 <span>Gestion structurée des inscriptions et participations</span>
-               </li>
-               <li className="feature-item">
-                 <div className="feature-icon">
-                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                     <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                   </svg>
-                 </div>
-                 <span>Suivi efficace des missions et des participations</span>
-                </li>
-              </ul>
-                          
+    <section
+      id="presentation"
+      style={{ background: "#f8fafc", padding: "96px 24px", fontFamily: "Inter, sans-serif" }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 64, alignItems: "center" }}>
+
+          {/* LEFT — contenu */}
+          <div>
+            {/* badge */}
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              background: "#E1F5EE", borderRadius: 99,
+              padding: "6px 16px", marginBottom: 20,
+            }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#1D9E75", display: "inline-block" }} />
+              <span style={{ fontSize: 12, fontWeight: 700, color: "#0F6E56", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                À propos de nous
+              </span>
             </div>
+
+            <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 700, color: "#0f172a", lineHeight: 1.2, marginBottom: 20 }}>
+              Qui sommes-<span style={{ color: "#1D9E75" }}>nous</span> ?
+            </h2>
+
+            <p style={{ fontSize: 15, color: "#64748b", lineHeight: 1.8, marginBottom: 16 }}>
+              Notre plateforme est une solution digitale dédiée à la gestion et à l'organisation du bénévolat. Elle permet de connecter efficacement les associations et les bénévoles à travers un espace centralisé, simple et accessible.
+            </p>
+            <p style={{ fontSize: 15, color: "#64748b", lineHeight: 1.8, marginBottom: 32 }}>
+              Elle offre aux associations la possibilité de publier et gérer leurs missions, tout en facilitant aux bénévoles la recherche d'opportunités adaptées à leurs compétences et disponibilités.
+            </p>
+
+            {/* features */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 36 }}>
+              {[
+                { icon: <Zap size={15} />,    text: "Gestion centralisée et intuitive des activités bénévoles" },
+                { icon: <Users size={15} />,  text: "Gestion structurée des inscriptions et participations"    },
+                { icon: <Target size={15} />, text: "Suivi efficace des missions et des participations"         },
+              ].map((f, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{
+                    width: 32, height: 32, borderRadius: 8,
+                    background: "#E1F5EE",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    color: "#0F6E56", flexShrink: 0,
+                  }}>
+                    {f.icon}
+                  </div>
+                  <span style={{ fontSize: 14, color: "#374151", fontWeight: 500 }}>{f.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* stats */}
+            {/* <div style={{
+              display: "flex", gap: 32,
+              paddingTop: 28, borderTop: "0.5px solid #e2e8f0",
+              flexWrap: "wrap",
+            }}>
+              {[
+                { val: "120+", label: "Associations" },
+                { val: "850+", label: "Bénévoles"    },
+                { val: "300+", label: "Missions"     },
+              ].map((s) => (
+                <div key={s.label}>
+                  <p style={{ fontSize: 22, fontWeight: 700, color: "#085041", margin: 0 }}>{s.val}</p>
+                  <p style={{ fontSize: 12, color: "#94a3b8", margin: "3px 0 0", fontWeight: 500 }}>{s.label}</p>
+                </div>
+              ))}
+            </div> */}
           </div>
 
-          {/* Right Column - Image (Floating) */}
-          <div className="col-lg-6">
-            <div className="image-column">
-              <div 
-                className="about-image-wrapper mt-5"
-                style={{
-                  transform: `translateY(${scrollY * 0.03}px)`
-                }}
-              >
-                <img 
-                  src="/images/image4.jpeg"
-                  className="about-image"
-                />
-              </div>
+          {/* RIGHT — image */}
+          <div style={{ position: "relative" }}>
+            {/* déco cercle bg */}
+            <div style={{
+              position: "absolute", top: -24, right: -24,
+              width: 200, height: 200, borderRadius: "50%",
+              background: "#E1F5EE", zIndex: 0,
+            }} />
+            {/* déco dots */}
+            <div style={{
+              position: "absolute", bottom: -16, left: -16,
+              width: 80, height: 80, zIndex: 0,
+              backgroundImage: "radial-gradient(circle, #9FE1CB 1.5px, transparent 1.5px)",
+              backgroundSize: "14px 14px",
+            }} />
+
+            <div style={{
+              position: "relative", zIndex: 1,
+              borderRadius: 24, overflow: "hidden",
+              boxShadow: "0 24px 48px rgba(8,80,65,0.15)",
+              transform: `translateY(${scrollY * 0.03}px)`,
+              transition: "transform 0.1s linear",
+            }}>
+              <img
+                src="/images/image4.jpeg"
+                alt="Présentation"
+                style={{ width: "100%", height: 440, objectFit: "cover", display: "block" }}
+              />
+              {/* overlay badge sur image */}
+              {/* <div style={{
+                position: "absolute", bottom: 20, left: 20,
+                background: "rgba(8,80,65,0.92)",
+                backdropFilter: "blur(8px)",
+                borderRadius: 12, padding: "12px 18px",
+                border: "0.5px solid rgba(255,255,255,0.15)",
+              }}>
+                <p style={{ color: "#9FE1CB", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 3px" }}>
+                  Impact réel
+                </p>
+                <p style={{ color: "white", fontSize: 14, fontWeight: 600, margin: 0 }}>
+                  +300 missions réalisées
+                </p>
+              </div> */}
             </div>
           </div>
         </div>
