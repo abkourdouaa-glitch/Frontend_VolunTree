@@ -92,7 +92,7 @@ const Home = () => {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "#1D9E75", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
-              Pourquoi G-Asso ?
+              Pourquoi VolunTree ?
             </p>
             <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 700, color: "#0f172a", margin: 0 }}>
               Une plateforme pensée pour vous
