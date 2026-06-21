@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const api = axios.create({ baseURL: 'http://localhost:8000/api' });
+const api = axios.create({ baseURL: 'https://backend-volun-tree.vercel.app/api' });
 
 // Sub-component: Progress bar "les bénévoles"
 const VolBar = ({ vols, cap }) => (
@@ -194,7 +194,7 @@ const DetailModal = ({ mission, onClose }) => {
         {hasImage ? (
           <div className="relative w-full h-44 overflow-hidden bg-gray-100 shrink-0">
             <img
-              src={`http://localhost:8000/storage/${mission.image}`}
+              src={`https://backend-volun-tree.vercel.app/storage/${mission.image}`}
               alt={mission.titre}
               className="w-full h-full object-cover"
             />

@@ -27,7 +27,7 @@ const DownloadPassBtn = ({ candidatureId }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:8000/api/candidatures/${candidatureId}/pass-pdf`,
+        `https://backend-volun-tree.vercel.app/api/candidatures/${candidatureId}/pass-pdf`,
         {
           headers: { Authorization: `Bearer ${token}` },
           responseType: "blob",
@@ -89,7 +89,7 @@ const Applications = () => {
     const fetchApplications = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:8000/api/candidatures/benevole/${BENEVOLE_ID}`, {
+        const res = await axios.get(`https://backend-volun-tree.vercel.app/api/candidatures/benevole/${BENEVOLE_ID}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const sorted = res.data.sort((a, b) => b.id - a.id);
@@ -123,7 +123,6 @@ const Applications = () => {
   const pending  = active.filter((a) => a.statut === "en_attente").length;
   const rate     = total > 0 ? Math.round((accepted / total) * 100) : 0;
 
-  // Switchew la liste target selon l'onglet pour map , recherche ou pagination
   const targetList = showArchived ? archived : active;
 
   const filtered = targetList.filter(

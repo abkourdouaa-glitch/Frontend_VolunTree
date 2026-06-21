@@ -88,7 +88,7 @@ const Candidatures = () => {
   const fetchCandidatures = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:8000/api/candidatures/association/${ASSOCIATION_ID}`, {
+      const res = await axios.get(`https://backend-volun-tree.vercel.app/api/candidatures/association/${ASSOCIATION_ID}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCandidatures(res.data);
@@ -102,7 +102,7 @@ const Candidatures = () => {
   const updateStatut = async (id, newStatus) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`http://localhost:8000/api/candidatures/${id}/statut`, 
+      await axios.put(`https://backend-volun-tree.vercel.app/api/candidatures/${id}/statut`, 
         { statut: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -300,7 +300,7 @@ const Candidatures = () => {
                           <div className="flex items-center gap-2">
                             {d.benevole?.photo_profile ? (
                               <img 
-                                src={d.benevole.photo_profile.startsWith('http') ? d.benevole.photo_profile : `http://localhost:8000/storage/${d.benevole.photo_profile}`} 
+                                src={d.benevole.photo_profile.startsWith('http') ? d.benevole.photo_profile : `https://backend-volun-tree.vercel.app/storage/${d.benevole.photo_profile}`} 
                                 alt={d.benevole?.nom} 
                                 className="w-7 h-7 rounded-full object-cover flex-shrink-0 border border-slate-100"
                                 onError={(e) => {

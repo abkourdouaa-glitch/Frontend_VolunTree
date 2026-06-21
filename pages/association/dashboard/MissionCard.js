@@ -4,7 +4,7 @@ import { Calendar, MapPin } from "lucide-react";
 const getAssociationPhotoUrl = (association) => {
   if (!association) return null;
   if (association.photo_profile) {
-    return `http://localhost:8000/storage/${association.photo_profile}`;
+    return `https://backend-volun-tree.vercel.app/storage/${association.photo_profile}`;
   }
   return null;
 };

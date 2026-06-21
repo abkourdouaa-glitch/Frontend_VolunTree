@@ -35,7 +35,7 @@ const FormAssociation = () => {
     const data = new FormData();
     Object.entries(formData).forEach(([k, v]) => data.append(k, v));
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/inscription-association", data, {
+      const response = await axios.post("https://backend-volun-tree.vercel.app/api/inscription-association", data, {
         headers: { "Content-Type": "multipart/form-data" }, withCredentials: true,
       });
       if (response.data.status === "success" || response.data.access_token) {

@@ -34,7 +34,7 @@ const SideBar = ({ isOpen, onToggleCollapse }) => {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        await axios.post("http://localhost:8000/api/logout", {}, {
+        await axios.post("https://backend-volun-tree.vercel.app/api/logout", {}, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }

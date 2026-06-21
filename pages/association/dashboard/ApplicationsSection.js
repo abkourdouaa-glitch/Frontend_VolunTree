@@ -13,7 +13,7 @@ export const ApplicationsSection = ({
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:8000/api/candidatures/${appId}/statut`,
+        `https://backend-volun-tree.vercel.app/api/candidatures/${appId}/statut`,
         { statut: newStatut },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -103,7 +103,7 @@ const ProfileBenevole = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/benevole/profile", api(token));
+        const res = await axios.get("https://backend-volun-tree.vercel.app/api/benevole/profile", api(token));
         const p = res.data.data || res.data;
 
         setForm({
@@ -143,7 +143,7 @@ const ProfileBenevole = () => {
         formData.append("photo_profile", avatarFile);
       }
 
-      const res = await axios.post("http://localhost:8000/api/benevole/profile", formData, {
+      const res = await axios.post("https://backend-volun-tree.vercel.app/api/benevole/profile", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data"

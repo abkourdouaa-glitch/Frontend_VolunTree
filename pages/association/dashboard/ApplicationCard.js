@@ -7,7 +7,7 @@ export const ApplicationCard = ({ app, onAction, readOnly = false }) => {
           <div className="w-12 h-12 flex-shrink-0 rounded-full overflow-hidden shadow-sm">
             {app.benevole?.photo_profile ? (
               <img
-                src={`http://localhost:8000/storage/${app.benevole.photo_profile}`}
+                src={`https://backend-volun-tree.vercel.app/storage/${app.benevole.photo_profile}`}
                 alt={app.benevole?.nom || ""}
                 className="w-full h-full object-cover"
                 onError={(e) => {

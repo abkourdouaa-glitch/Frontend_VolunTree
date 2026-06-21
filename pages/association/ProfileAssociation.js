@@ -116,8 +116,8 @@ const ProfileAssociation = () => {
     const fetchData = async () => {
       try {
         const [profileRes, missionsRes] = await Promise.all([
-          axios.get("http://localhost:8000/api/association/profile", api(token)),
-          axios.get(`http://localhost:8000/api/missions/association/${user.id}`, api(token)),
+          axios.get("https://backend-volun-tree.vercel.app/api/association/profile", api(token)),
+          axios.get(`https://backend-volun-tree.vercel.app/api/missions/association/${user.id}`, api(token)),
         ]);
         
         const p = profileRes.data.data || profileRes.data;
@@ -162,7 +162,7 @@ const handleSaveProfile = async () => {
       formData.append("photo_profile", avatarFile);
     }
 
-    const res = await axios.post("http://localhost:8000/api/association/profile", formData, {
+    const res = await axios.post("https://backend-volun-tree.vercel.app/api/association/profile", formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data",

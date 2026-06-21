@@ -39,7 +39,7 @@ const ImagePlaceholder = ({ categorie }) => {
 const getAssociationPhotoUrl = (association) => {
   if (!association) return null;
   if (association.photo_profile) {
-    return `http://localhost:8000/storage/${association.photo_profile}`;
+    return `https://backend-volun-tree.vercel.app/storage/${association.photo_profile}`;
   }
   return null;
 };
@@ -108,7 +108,7 @@ const DetailModal = ({ mission, onClose, onPostuler, applied }) => {
         <div className="relative w-full shrink-0" style={{ height: 200 }}>
           {hasImage ? (
             <img
-              src={`http://localhost:8000/storage/${mission.image}`}
+              src={`https://backend-volun-tree.vercel.app/storage/${mission.image}`}
               alt={mission.titre}
               className="w-full h-full object-cover"
             />
@@ -273,13 +273,13 @@ const Missions = () => {
     const fetchMissions = async () => {
       try {
         const token = localStorage.getItem("token");
-        // const response = await axios.get("http://localhost:8000/api/missions", {
-        const response = await axios.get("http://localhost:8000/api/missions/actives", {
+        // const response = await axios.get("https://backend-volun-tree.vercel.app/api/missions", {
+        const response = await axios.get("https://backend-volun-tree.vercel.app/api/missions/actives", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setMissions(response.data.sort((a, b) => b.id - a.id));
         console.log("image =", response.data[0]?.image)
-        const resApps = await axios.get(`http://localhost:8000/api/candidatures/benevole/${BENEVOLE_ID}`, {
+        const resApps = await axios.get(`https://backend-volun-tree.vercel.app/api/candidatures/benevole/${BENEVOLE_ID}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUserApplications(resApps.data);
@@ -300,7 +300,7 @@ const Missions = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:8000/api/candidatures", 
+        "https://backend-volun-tree.vercel.app/api/candidatures", 
         {
           mission_id:  mission.id,
           benevole_id: BENEVOLE_ID,
@@ -397,7 +397,7 @@ const Missions = () => {
                   <div className="w-full h-36 overflow-hidden shrink-0">
                     {mission.image ? (
                       <img
-                        src={`http://localhost:8000/storage/${mission.image}`}
+                        src={`https://backend-volun-tree.vercel.app/storage/${mission.image}`}
                         alt={mission.titre}
                         className="w-full h-full object-cover"
                         onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }}
