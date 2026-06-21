@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar";
 const getAssociationPhotoUrl = (association) => {
   if (!association) return null;
   if (association.photo_profile) {
-    return `https://backend-volun-tree.vercel.app/storage/${association.photo_profile}`;
+    return `http://localhost:8000/storage/${association.photo_profile}`;
   }
   return null;
 };
@@ -42,7 +42,7 @@ const DownloadPassBtn = ({ candidatureId }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `https://backend-volun-tree.vercel.app/api/candidatures/${candidatureId}/pass-pdf`,
+        `http://localhost:8000/api/candidatures/${candidatureId}/pass-pdf`,
         {
           headers: { Authorization: `Bearer ${token}` },
           responseType: "blob",
@@ -145,7 +145,7 @@ const DashboardBenevolat = () => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
       try {
-        const resMissions = await axios.get("https://backend-volun-tree.vercel.app/api/missions/actives", {
+        const resMissions = await axios.get("http://localhost:8000/api/missions/actives", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMissions(resMissions.data);
@@ -154,7 +154,7 @@ const DashboardBenevolat = () => {
       }
 
       try {
-        const resApps = await axios.get(`https://backend-volun-tree.vercel.app/api/candidatures/benevole/${id}`, {
+        const resApps = await axios.get(`http://localhost:8000/api/candidatures/benevole/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMyApplications(resApps.data);
@@ -179,7 +179,7 @@ const DashboardBenevolat = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "https://backend-volun-tree.vercel.app/api/candidatures",
+        "http://localhost:8000/api/candidatures",
         {
           mission_id: selectedMission.id,
           benevole_id: benevolId,
@@ -309,7 +309,7 @@ const DashboardBenevolat = () => {
                       <div className="w-full h-32 overflow-hidden shrink-0">
                         {mission.image ? (
                           <img
-                            src={`https://backend-volun-tree.vercel.app/storage/${mission.image}`}
+                            src={`http://localhost:8000/storage/${mission.image}`}
                             alt={mission.titre}
                             className="w-full h-full object-cover"
                             onError={(e) => {

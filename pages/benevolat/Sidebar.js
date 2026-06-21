@@ -45,7 +45,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       const token = localStorage.getItem("token");
       if (token) {
         await axios.post(
-          "https://backend-volun-tree.vercel.app/api/logout",
+          "http://localhost:8000/api/logout",
           {},
           { headers: { Authorization: `Bearer ${token}` } }
         );

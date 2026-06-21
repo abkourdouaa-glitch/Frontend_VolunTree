@@ -25,7 +25,7 @@ const DashboardAssociation = () => {
       if (!ASSOCIATION_ID) { setLoading(false); return; }
       try {
         const res = await axios.get(
-          `https://backend-volun-tree.vercel.app/api/missions/association/${ASSOCIATION_ID}`,
+          `http://localhost:8000/api/missions/association/${ASSOCIATION_ID}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setMissions(res.data.sort((a, b) => b.id - a.id));
@@ -67,7 +67,7 @@ const DashboardAssociation = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.get(
-        `https://backend-volun-tree.vercel.app/api/candidatures/association/${ASSOCIATION_ID}`,
+        `http://localhost:8000/api/candidatures/association/${ASSOCIATION_ID}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setApplications(res.data.filter((c) => c.mission_id === missionId));
