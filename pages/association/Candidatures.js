@@ -299,8 +299,8 @@ const Candidatures = () => {
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-2">
                             {d.benevole?.photo_profile ? (
-                              <img 
-                                src={d.benevole.photo_profile.startsWith('http') ? d.benevole.photo_profile : `http://localhost:8000/api/candidatures/storage/${d.benevole.photo_profile}`} 
+                              <img                                                                              
+                                src={d.benevole.photo_profile.startsWith('http') ? d.benevole.photo_profile : `http://localhost:8000/storage/${d.benevole.photo_profile}`} 
                                 alt={d.benevole?.nom} 
                                 className="w-7 h-7 rounded-full object-cover flex-shrink-0 border border-slate-100"
                                 onError={(e) => {

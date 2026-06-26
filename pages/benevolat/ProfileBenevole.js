@@ -137,8 +137,8 @@ const ProfileBenevole = () => {
       formData.append("nom", form.nom);
       formData.append("ville", form.ville);
       formData.append("date_naissance", form.date_naissance);
+      
       formData.append("_method", "PUT");
-
       if (avatarFile) {
         formData.append("photo_profile", avatarFile);
       }

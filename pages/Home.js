@@ -113,7 +113,7 @@ const Home = () => {
                 color: "#085041",
                 bg: "#E1F5EE",
                 title: "Associations vérifiées",
-                desc: "Toutes les associations sont validées avec récépissé officiel avant publication.",
+                desc: "Toutes les structures associatives sont validées en interne avant l'activation de leur espace de publication.",
               },
               {
                 icon: <Globe size={22} />,
